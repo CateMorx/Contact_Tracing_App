@@ -4,6 +4,8 @@
 
 #imports necessary elements
 import tkinter as tk
+from Search_Entry import Search_Entries
+from Add_Entry import Add_Entries
 
 #Create Class GUI
 class GUI:
@@ -37,8 +39,11 @@ class GUI:
             widget.destroy()
 
         #Button to go back to starting page
-        self.go_back = tk.Button(self.root, text="Go Back", command= self.go_back_option)
+        self.go_back = tk.Button(self.root, text="Return", command= self.go_back_option)
         self.go_back.pack()
+
+        add_entry = Add_Entries(self.root)
+        add_entry.GUI()
 
     #Create def for Search Entry
     def Search_Entry(self):
@@ -47,17 +52,23 @@ class GUI:
             widget.destroy()
 
         #Button to go back to starting page
-        self.go_back = tk.Button(self.root, text="Go Back", command= self.go_back_option)
+        self.go_back = tk.Button(self.root, text="Return", command= self.go_back_option)
         self.go_back.pack()
+
+        search_entry = Search_Entries(self.root)
+        search_entry.GUI()
 
     #Create def to allow users to go back to Starting page
     def go_back_option(self):
+        # Clears the current GUI
         for widget in self.root.winfo_children():
             widget.destroy()
 
+        # Create the button for Add Entry
         self.add_entry_button = tk.Button(self.root, text="Add Entry", command= self.Add_Entry)
         self.add_entry_button.pack()
 
+         # Create the button for Search Entry
         self.search_entry_button= tk.Button(self.root, text="Search Entry", command= self.Search_Entry)
         self.search_entry_button.pack()
 
