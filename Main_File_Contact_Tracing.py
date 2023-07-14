@@ -2,8 +2,26 @@
 #Final Project in OOP
 #Create a Covid-19 Contact Tracing App with GUI
 
+#imports necessary elements
+import tkinter as tk
+
 #Create Class GUI
-#create def for constructor
-#create def for Add Entry
-#Create def for Search Entry
-#Executes code within main
+class GUI:
+    #create def for constructor
+    def __init__(self):
+        self.root = tk.Tk()
+        self.root.title("Contact Tracing")
+        # Create the buttons
+        self.button1 = tk.Button(self.root, text="Add Entry", command= self.Add_Entry)
+        self.button1.pack(pady=10)
+
+        self.button2 = tk.Button(self.root, text="Search Entry", command= self.Search_Entry)
+        self.button2.pack(pady=10)
+
+        self.root.geometry("600x400")
+    #create def for Add Entry
+    def Add_Entry(self):
+    #Create def for Search Entry
+    def Search_Entry(self):
+
+    #Executes code within main
