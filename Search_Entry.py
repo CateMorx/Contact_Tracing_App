@@ -38,10 +38,18 @@ class Search_Entries:
                 if typed.lower() in item.lower():
                     data.append(item)
 
-            # Add items to listbox
-            for item in data:
-                self.suggestions_box.insert(tk.END, item)
-                
+        # Update the listbox with selected items
+        self.update(data)
+
+
+    def update(self, data):
+        # Clear the listbox
+        self.suggestions_box.delete(0, tk.END)
+
+        # Add items to listbox
+        for item in data:
+            self.suggestions_box.insert(tk.END, item)
+
     #creates method for generating suggestion for the results
     def generate_suggestions(self, folder_path):
 
