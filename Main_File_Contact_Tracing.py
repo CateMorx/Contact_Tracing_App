@@ -19,9 +19,24 @@ class GUI:
         self.button2.pack(pady=10)
 
         self.root.geometry("600x400")
+
+    #creates main def to execute code
+    def main(self):
+        self.root.mainloop()
+
     #create def for Add Entry
     def Add_Entry(self):
+    # Clear the current GUI
+        for widget in self.root.winfo_children():
+            widget.destroy()
+
     #Create def for Search Entry
     def Search_Entry(self):
+    # Clear the current GUI
+        for widget in self.root.winfo_children():
+            widget.destroy()
 
     #Executes code within main
+if __name__ == '__main__':
+    window = GUI()
+    window.main()
