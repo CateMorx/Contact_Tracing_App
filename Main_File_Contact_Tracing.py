@@ -2,7 +2,7 @@
 #Final Project in OOP
 #Create a Covid-19 Contact Tracing App with GUI
 
-#imports necessary elements
+#imports necessary modules
 import tkinter as tk
 from Search_Entry import Search_Entries
 from Add_Entry import Add_Entries
