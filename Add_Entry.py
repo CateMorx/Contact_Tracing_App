@@ -20,41 +20,41 @@ class Add_Entries:
     def GUI(self):
         #creates label for instruction
         self.title_label= tk.Label(self.root, text="Please Fill Out The Following Information: ", font=('Arial',16))
-        self.title_label.place(x=200, y=90)
+        self.title_label.place(x=300, y=50)
 
         #creates demographic label 
         self.demographic_label= tk.Label(self.root, text= "Basic Demographic")
-        self.demographic_label.place(x=100, y=140)
+        self.demographic_label.place(x=100, y=90)
 
         #creates label and entry box for Name
         self.name_label= tk.Label(self.root, text= "Name:")
-        self.name_label.place(x=100, y=180)       
+        self.name_label.place(x=100, y=140)       
         self.name_entry=tk.Entry(self.root)
-        self.name_entry.place(x=100, y=200)
+        self.name_entry.place(x=100, y=160)
 
         #creates label and entry box for Age
         self.age_label= tk.Label(self.root, text="Age:")
-        self.age_label.place(x=100, y=260)
+        self.age_label.place(x=100, y=220)
         self.age_entry=tk.Entry(self.root)
-        self.age_entry.place(x=100, y=280)
+        self.age_entry.place(x=100, y=240)
 
         self.age_entry.bind("<KeyRelease>", self.validate_age_entry)
 
         #creates label and entry box for Gender
         self.gender_label= tk.Label(self.root, text="Gender:") 
-        self.gender_label.place(x=100, y=320)
+        self.gender_label.place(x=100, y=300)
 
         #Adds multiple choice "Female"
         female_radio = tk.Radiobutton(self.root, text="Female", variable=self.selected_gender, value="1")
-        female_radio.place(x=100, y=340)
+        female_radio.place(x=100, y=320)
 
         #Adds multiple choice "Male"
         male_radio = tk.Radiobutton(self.root, text="Male", variable=self.selected_gender, value="2")
-        male_radio.place(x=100, y=360)
+        male_radio.place(x=100, y=340)
 
         #Adds multiple choice "Prefer Not To Say"
         prefer_not_radio = tk.Radiobutton(self.root, text="Prefer Not To Say", variable=self.selected_gender, value="3")
-        prefer_not_radio.place(x=100, y=380)
+        prefer_not_radio.place(x=100, y=360)
 
         #creates label and entry box for Address
         self.address_label= tk.Label(self.root, text="Adress:") 
@@ -64,17 +64,17 @@ class Add_Entries:
 
         #creates label and entry box for Contact Details
         self.contact_label= tk.Label(self.root, text="Contact Details:") 
-        self.contact_label.place(x=100, y=480)
+        self.contact_label.place(x=100, y=500)
         self.contact_entry=tk.Entry(self.root)
-        self.contact_entry.place(x=100, y=500)
+        self.contact_entry.place(x=100, y=520)
 
         #creates label for locations visited last 14 days
         self.test_label= tk.Label(self.root, text="What Locations Have you been to the last 14 days?:") 
-        self.test_label.place(x=300, y=140)
+        self.test_label.place(x=300, y=90)
 
         # Create an entry box for Search Bar to view available locations
         self.search_location = tk.Entry(self.root, font=("Helvetica", 16), fg="gray")
-        self.search_location.place(x=300, y=160)
+        self.search_location.place(x=300, y=110)
 
         #Adds temporary text within entry widget
         default_text = "Search For Locations"
@@ -82,13 +82,21 @@ class Add_Entries:
         self.search_location.bind("<FocusIn>", self.on_entry_click)
         self.search_location.bind("<FocusOut>", self.on_entry_leave)
 
+        #creates result label 
+        self.suggestions_box_1_results = tk.Label(self.root, text= "Results:")
+        self.suggestions_box_1_results.place(x=300, y=140)
+
         # Create a listbox for results
         self.suggestions_box_1 = tk.Listbox(self.root, width=50, selectmode=tk.MULTIPLE)
-        self.suggestions_box_1.place(x=300, y=200)
+        self.suggestions_box_1.place(x=300, y=160)
+
+        #creates selected locations label 
+        self.suggestions_box_2_results = tk.Label(self.root, text= "Selected Location:")
+        self.suggestions_box_2_results.place(x=300, y=330)
 
         # Create a listbox for all selected locations
         self.suggestions_box_2 = tk.Listbox(self.root, width=50, selectmode=tk.MULTIPLE)
-        self.suggestions_box_2.place(x=300, y=300)
+        self.suggestions_box_2.place(x=300, y=350)
 
         # Create a binding on the entry box
         self.search_location.bind("<KeyRelease>", self.check)
@@ -98,33 +106,33 @@ class Add_Entries:
 
         # create label and entry to add new location
         self.test_label= tk.Label(self.root, text="Add New Location:") 
-        self.test_label.place(x=650, y=140)       
+        self.test_label.place(x=650, y=90)       
         self.new_choice_entry = tk.Entry(self.root)
-        self.new_choice_entry.place(x=650, y=180)
+        self.new_choice_entry.place(x=650, y=110)
 
         # Create a button to add new choices
         self.new_choice_button = tk.Button(self.root, text="Add New Location", command=self.add_new_choice)
-        self.new_choice_button.place(x=650, y=220)
+        self.new_choice_button.place(x=650, y=140)
 
         #Adds label for Covid-19 test result
         self.test_label= tk.Label(self.root, text="Have you been tested for the last 14 days?:") 
-        self.test_label.place(x=650, y=260)
+        self.test_label.place(x=650, y=220)
 
         #Adds multiple choice "Yes-Negative"
         yes_negative_radio = tk.Radiobutton(self.root, text="Yes-Negative", variable=self.selected_option, value="1")
-        yes_negative_radio.place(x=650, y=280)
+        yes_negative_radio.place(x=650, y=240)
 
         #Adds multiple choice "Yes-Positive"
         yes_positive_radio = tk.Radiobutton(self.root, text="Yes-Positive", variable=self.selected_option, value="2")
-        yes_positive_radio.place(x=650, y=300)
+        yes_positive_radio.place(x=650, y=260)
 
         #Adds multiple choice "No"
         no_radio = tk.Radiobutton(self.root, text="No", variable=self.selected_option, value="3")
-        no_radio.place(x=650, y=320)
+        no_radio.place(x=650, y=280)
 
         #create submit button
         button = tk.Button(self.root, text="Submit", command=self.export_input)
-        button.place(x=500, y=500)
+        button.place(x=500, y=550)
 
     #Creates filter based on user input in search Bar
     def check(self, e):
@@ -153,7 +161,7 @@ class Add_Entries:
             return
         # Check if suggestions_box_1 is empty
         if self.suggestions_box_1.size() == 0:
-            messagebox.showinfo("No Results", "No matching results found.")
+            messagebox.showinfo("No Results", "No matching results found. Please Add A New Location")
 
     #creates def to transfer all selected item in suggestionbox1 to suggestionbox2
     def transfer_items(self, e):
