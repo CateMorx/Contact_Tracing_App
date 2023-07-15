@@ -13,6 +13,7 @@ class Add_Entries:
         self.root.geometry("1000x600")
         self.selected_items = []
         self.selected_items_2 = []
+        self.selected_option= tk.IntVar()
 
     #creates def for the GUI
     def GUI(self):
@@ -85,6 +86,22 @@ class Add_Entries:
         # Create a button to add new choices
         self.new_choice_button = tk.Button(self.root, text="Add New Location", command=self.add_new_choice)
         self.new_choice_button.place(x=650, y=220)
+
+        #Adds label for Covid-19 test result
+        self.test_label= tk.Label(self.root, text="Have you been tested for the last 14 days?:") 
+        self.test_label.place(x=650, y=260)
+
+        #Adds multiple choice "Yes-Negative"
+        yes_negative_radio = tk.Radiobutton(self.root, text="Yes-Negative", variable=self.selected_option, value="1")
+        yes_negative_radio.place(x=650, y=280)
+
+        #Adds multiple choice "Yes-Positive"
+        yes_positive_radio = tk.Radiobutton(self.root, text="Yes-Positive", variable=self.selected_option, value="2")
+        yes_positive_radio.place(x=650, y=300)
+
+        #Adds multiple choice "No"
+        no_radio = tk.Radiobutton(self.root, text="No", variable=self.selected_option, value="3")
+        no_radio.place(x=650, y=320)
 
         #create submit button
         button = tk.Button(self.root, text="Submit", command=self.export_input)
@@ -176,8 +193,17 @@ class Add_Entries:
 
         location= ', '.join(self.selected_items)
 
+        #Retrieves user selected option for Covid-19 Test Results
+        selected_option = self.selected_option.get()
+        if selected_option == 1:
+            test_result= "Yes-Negative"
+        elif selected_option == 2:
+            test_result= "Yes-Positive"
+        elif selected_option == 3:
+            test_result= "Not Tested"
+
         #creates the content to be displayed within the text file
-        content = f"Name: {name}\nAge: {age}\nGender: {gender}\nAddress: {address}\nContact Details: {contact}\nLocations Visited Last 14 Days: {location}"
+        content = f"Name: {name}\nAge: {age}\nGender: {gender}\nAddress: {address}\nContact Details: {contact} \nTested for Covid-19 the last 14 days: {test_result} \nLocations Visited Last 14 Days: {location}"
 
         #indicates file path and sets the text file name as the name input
         file_path = r"C:\Users\Cate\Desktop\A.Y 2022-2023\Contact_Tracing_App\All_Entries"+ "\\" + name + ".txt"
