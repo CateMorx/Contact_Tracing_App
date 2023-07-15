@@ -11,59 +11,73 @@ class Add_Entries:
     def __init__(self, root):
         self.root = root
         self.root.geometry("1000x600")
+        self.selected_items = []
+        self.selected_items_2 = []
 
     #creates def for the GUI
     def GUI(self):
+        #creates label for instruction
         self.title_label= tk.Label(self.root, text="Please Fill Out The Following Information: ", font=('Arial',16))
         self.title_label.place(x=200, y=90)
 
+        #creates demographic label 
         self.demographic_label= tk.Label(self.root, text= "Basic Demographic")
         self.demographic_label.place(x=100, y=140)
 
+        #creates label and entry box for Name
         self.name_label= tk.Label(self.root, text= "Name:")
         self.name_label.place(x=100, y=180)       
         self.name_entry=tk.Entry(self.root)
         self.name_entry.place(x=100, y=200)
 
+        #creates label and entry box for Age
         self.age_label= tk.Label(self.root, text="Age:")
         self.age_label.place(x=100, y=260)
         self.age_entry=tk.Entry(self.root)
         self.age_entry.place(x=100, y=280)
 
+        #creates label and entry box for Gender
         self.gender_label= tk.Label(self.root, text="Gender:") 
         self.gender_label.place(x=100, y=320)
         self.gender_entry=tk.Entry(self.root)
         self.gender_entry.place(x=100, y=340)
 
+        #creates label and entry box for Address
         self.address_label= tk.Label(self.root, text="Adress:") 
         self.address_label.place(x=100, y=380)
         self.address_entry=tk.Entry(self.root)
         self.address_entry.place(x=100, y=400)
 
+        #creates label and entry box for Contact Details
         self.contact_label= tk.Label(self.root, text="Contact Details:") 
         self.contact_label.place(x=100, y=440)
         self.contact_entry=tk.Entry(self.root)
         self.contact_entry.place(x=100, y=460)
 
+        #creates label for locations visited last 14 days
         self.test_label= tk.Label(self.root, text="What Locations Have you been to the last 14 days?:") 
         self.test_label.place(x=300, y=140)
 
-        # Create an entry box for Search Bar to view available entries
+        # Create an entry box for Search Bar to view available locations
         self.search_entry = tk.Entry(self.root, font=("Helvetica", 16))
         self.search_entry.place(x=300, y=160)
 
         # Create a listbox for results
-        self.suggestions_box = tk.Listbox(self.root, width=50)
-        self.suggestions_box.place(x=300, y=200)
+        self.suggestions_box_1 = tk.Listbox(self.root, width=50, selectmode=tk.MULTIPLE)
+        self.suggestions_box_1.place(x=300, y=200)
+
+        # Create a listbox for all selected locations
+        self.suggestions_box_2 = tk.Listbox(self.root, width=50, selectmode=tk.MULTIPLE)
+        self.suggestions_box_2.place(x=300, y=300)
 
         # Create a binding on the entry box
         self.search_entry.bind("<KeyRelease>", self.check)
 
         # Create a binding on the listbox onclick
-        self.suggestions_box.bind("<<ListboxSelect>>", self.fillout)
+        self.suggestions_box_1.bind("<<ListboxSelect>>", self.transfer_items)
 
-
-        self.test_label= tk.Label(self.root, text="Add New Entry:") 
+        # create label and entry to add new location
+        self.test_label= tk.Label(self.root, text="Add New Location:") 
         self.test_label.place(x=650, y=140)       
         self.new_choice_entry = tk.Entry(self.root)
         self.new_choice_entry.place(x=650, y=180)
@@ -72,43 +86,44 @@ class Add_Entries:
         self.new_choice_button = tk.Button(self.root, text="Add New Location", command=self.add_new_choice)
         self.new_choice_button.place(x=650, y=220)
 
+        #create submit button
         button = tk.Button(self.root, text="Submit", command=self.export_input)
         button.place(x=500, y=500)
 
     #Creates filter based on user input in search Bar
     def check(self, e):
-        # Retrieve what was typed
-        typed = self.search_entry.get()
+        typed = self.search_entry.get().lower()
 
-        #If there is ' ' input in search entry, calls generate_suggestion method with given folder path
-        if typed == '':
-            data = self.generate_suggestions("Locations.txt")
-        else:
-            #filters suggestion based on the user input in search bar, retrieves data from generate_suggestion method with given folder path
-            data = []
+        # Get the selected items from the first listbox
+        selected_indices_1 = self.suggestions_box_1.curselection()
+
+        #Clears previous items in listbox
+        self.suggestions_box_1.delete(0, tk.END)
+
+        #Filters results in the firstlistbox depending on input in search bar
+        if typed:
             for item in self.generate_suggestions("Locations.txt"):
-                if typed.lower() in item.lower():
-                    data.append(item)
+                if typed in item.lower():
+                    #Makes sure that there are no duplicates between listbox 1 and 2
+                    if item not in self.selected_items_2:
+                        self.suggestions_box_1.insert(tk.END, item)
 
-        # Update the listbox with selected items
-        self.update(data)
+        # Re-select the previously selected items in the first listbox
+        for index in selected_indices_1:
+            self.suggestions_box_1.select_set(index)
 
+    #creates def to transfer all selected item in suggestionbox1 to suggestionbox2
+    def transfer_items(self, e):
+        selected_indices_1 = self.suggestions_box_1.curselection()
 
-    def fillout(self, e):
-        # Delete whatever is in the entry box
-        self.search_entry.delete(0, tk.END)
+        # Transfer selected items from the first listbox to the second listbox
+        for index in selected_indices_1:
+            item = self.suggestions_box_1.get(index)
 
-        # Add clicked list item to entry box
-        self.search_entry.insert(0,  self.suggestions_box.get(tk.ANCHOR))
-
-
-    def update(self, data):
-        # Clear the listbox
-        self.suggestions_box.delete(0, tk.END)
-
-        # Add items to listbox
-        for item in data:
-            self.suggestions_box.insert(tk.END, item)
+            #Makes sure there is no duplicates within listbox 2
+            if item not in self.selected_items_2:
+                self.selected_items_2.append(item)
+                self.suggestions_box_2.insert(tk.END, item)
 
 
     #creates method for generating suggestion for the results
@@ -116,36 +131,65 @@ class Add_Entries:
 
         #Creates list for suggestions
         suggestions = []
+
+        #reads alll item in the text file and stores each line as an individual item in suggestions list
         with open(file_path, 'r') as file:
             lines = file.readlines()
             suggestions = [line.strip() for line in lines]
         #returns value of suggestion list
         return suggestions
     
+    #Allows user to add a new location
     def add_new_choice(self):
+        #Retrieves input from new_choice_entry
         new_choice = self.new_choice_entry.get()
+
+        #Indicates the file where the new item will be stored
         file_path = "Locations.txt"
 
+        #opens file and appends new_choice into the file
         with open(file_path, 'a') as file:
             file.write(f"\n{new_choice}")
 
+        #shows messagebox to cofirm that the new input is succesful
         messagebox.showinfo("New Location Added", "The location has been added successfully.")
 
+    #Exports all user input within add entry into a text file
     def export_input(self):
+        #Retrieves user input for age
         name = self.name_entry.get()
-        age = self.age_entry.get()
-        gender = self.gender_entry.get()
-        address = self.address_entry.get()
-        contact = self.contact_entry.get()
-        location= self.search_entry.get()
 
+        #Retrieves user input for age
+        age = self.age_entry.get()
+
+        #Retrieves user input for gender
+        gender = self.gender_entry.get()
+
+        #Retrieves user input for address
+        address = self.address_entry.get()
+
+        #Retrieves user input for contact details
+        contact = self.contact_entry.get()
+
+        # Retrieve all items in suggestions_box_2
+        self.selected_items = self.suggestions_box_2.get(0, tk.END) 
+
+        location= ', '.join(self.selected_items)
+
+        #creates the content to be displayed within the text file
         content = f"Name: {name}\nAge: {age}\nGender: {gender}\nAddress: {address}\nContact Details: {contact}\nLocations Visited Last 14 Days: {location}"
 
+        #indicates file path and sets the text file name as the name input
         file_path = r"C:\Users\Cate\Desktop\A.Y 2022-2023\Contact_Tracing_App\All_Entries"+ "\\" + name + ".txt"
 
+        #exports the file along with the content
         try:
             with open(file_path, 'w') as file:
                 file.write(content)
+
+            #shows messagebox if succesful export    
             messagebox.showinfo("Export Successful", f"Content exported to {file_path}")
+
+        #shows messageox if export failed
         except Exception as e:
             messagebox.showerror("Export Failed", str(e))

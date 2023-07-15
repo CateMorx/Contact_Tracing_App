@@ -43,10 +43,10 @@ class Search_Entries:
                 if typed.lower() in item.lower():
                     data.append(item)
 
-        # Update the listbox with selected items
+        # Update the listbox with filtered suggestion
         self.update(data)
 
-
+    #Creates autofill based on selected item in listbox, also calls method for display file content
     def fillout(self, e):
         # Delete whatever is in the entry box
         self.search_entry.delete(0, tk.END)
@@ -54,17 +54,21 @@ class Search_Entries:
         # Add clicked list item to entry box
         self.search_entry.insert(0,  self.suggestions_box.get(tk.ANCHOR))
 
-        # Read the contents of the selected file
+        # intialize folder path
         folder_path = r"C:\Users\Cate\Desktop\A.Y 2022-2023\Contact_Tracing_App\All_Entries"
+        # Reads and display the contents of the selected file
         file_path = os.path.join(folder_path, self.suggestions_box.get(tk.ANCHOR))
         if os.path.isfile(file_path):
             with open(file_path, 'r') as file:
                 file_content = file.read()
                 self.display_file_content(file_content)
+
+        #If there is no file, shows message box
         else:
             messagebox.showinfo("No Entry", "No matching entry found.")
 
 
+    # Update the listbox with filtered suggestion
     def update(self, data):
         # Clear the listbox
         self.suggestions_box.delete(0, tk.END)
@@ -91,6 +95,7 @@ class Search_Entries:
         #returns value of suggestion list
         return suggestions
     
+    #Displays file content of selected entry
     def display_file_content(self, content):
         # Create a new window
         window = tk.Toplevel(self.root)

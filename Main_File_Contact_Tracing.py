@@ -42,6 +42,7 @@ class GUI:
         self.go_back = tk.Button(self.root, text="Return", command= self.go_back_option)
         self.go_back.pack()
 
+        #Shows the GUI in Add_Entries
         add_entry = Add_Entries(self.root)
         add_entry.GUI()
 
@@ -55,6 +56,7 @@ class GUI:
         self.go_back = tk.Button(self.root, text="Return", command= self.go_back_option)
         self.go_back.pack()
 
+        #Shows the GUI in Search_Entries
         search_entry = Search_Entries(self.root)
         search_entry.GUI()
 
