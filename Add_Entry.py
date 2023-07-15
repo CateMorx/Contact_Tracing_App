@@ -38,6 +38,8 @@ class Add_Entries:
         self.age_entry=tk.Entry(self.root)
         self.age_entry.place(x=100, y=280)
 
+        self.age_entry.bind("<KeyRelease>", self.validate_age_entry)
+
         #creates label and entry box for Gender
         self.gender_label= tk.Label(self.root, text="Gender:") 
         self.gender_label.place(x=100, y=320)
@@ -206,6 +208,17 @@ class Add_Entries:
             self.search_location.insert(0, "Search For Locations")
             self.search_location.configure(foreground="gray")
 
+    def validate_age_entry(self, event):
+        age = self.age_entry.get()
+
+        if age:
+            try:
+                int(age)
+            except ValueError:
+                messagebox.showerror("Invalid Input", "Age must be an Integer")
+                self.age_entry.delete(0, tk.END)
+        else:
+            return
 
     #Exports all user input within add entry into a text file
     def export_input(self):
@@ -213,7 +226,18 @@ class Add_Entries:
         name = self.name_entry.get()
 
         #Retrieves user input for age
-        age = self.age_entry.get()
+        get_age = self.age_entry.get()
+
+        # Validate age input
+        try:
+            get_age =int(get_age)
+            if get_age <= 0 or get_age >= 100:
+                raise ValueError
+            else:
+                age=get_age
+        except ValueError:
+            messagebox.showerror("Invalid Age", "Please enter a valid age (1-99).")
+            return
 
         #Retrieves user input for gender
         gender_selected= self.selected_gender.get()
