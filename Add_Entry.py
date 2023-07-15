@@ -14,6 +14,7 @@ class Add_Entries:
         self.selected_items = []
         self.selected_items_2 = []
         self.selected_option= tk.IntVar()
+        self.selected_gender= tk.IntVar()
 
     #creates def for the GUI
     def GUI(self):
@@ -40,20 +41,30 @@ class Add_Entries:
         #creates label and entry box for Gender
         self.gender_label= tk.Label(self.root, text="Gender:") 
         self.gender_label.place(x=100, y=320)
-        self.gender_entry=tk.Entry(self.root)
-        self.gender_entry.place(x=100, y=340)
+
+        #Adds multiple choice "Female"
+        female_radio = tk.Radiobutton(self.root, text="Female", variable=self.selected_gender, value="1")
+        female_radio.place(x=100, y=340)
+
+        #Adds multiple choice "Male"
+        male_radio = tk.Radiobutton(self.root, text="Male", variable=self.selected_gender, value="2")
+        male_radio.place(x=100, y=360)
+
+        #Adds multiple choice "Prefer Not To Say"
+        prefer_not_radio = tk.Radiobutton(self.root, text="Prefer Not To Say", variable=self.selected_gender, value="3")
+        prefer_not_radio.place(x=100, y=380)
 
         #creates label and entry box for Address
         self.address_label= tk.Label(self.root, text="Adress:") 
-        self.address_label.place(x=100, y=380)
+        self.address_label.place(x=100, y=420)
         self.address_entry=tk.Entry(self.root)
-        self.address_entry.place(x=100, y=400)
+        self.address_entry.place(x=100, y=440)
 
         #creates label and entry box for Contact Details
         self.contact_label= tk.Label(self.root, text="Contact Details:") 
-        self.contact_label.place(x=100, y=440)
+        self.contact_label.place(x=100, y=480)
         self.contact_entry=tk.Entry(self.root)
-        self.contact_entry.place(x=100, y=460)
+        self.contact_entry.place(x=100, y=500)
 
         #creates label for locations visited last 14 days
         self.test_label= tk.Label(self.root, text="What Locations Have you been to the last 14 days?:") 
@@ -205,7 +216,13 @@ class Add_Entries:
         age = self.age_entry.get()
 
         #Retrieves user input for gender
-        gender = self.gender_entry.get()
+        gender_selected= self.selected_gender.get()
+        if gender_selected == 1:
+            gender= "Female"
+        elif gender_selected == 2:
+            gender= "Male"
+        elif gender_selected == 3:
+            gender= "Prefer Not To Say"
 
         #Retrieves user input for address
         address = self.address_entry.get()
