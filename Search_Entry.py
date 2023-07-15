@@ -3,6 +3,7 @@
 
 #imports necessary modules
 import tkinter as tk
+from tkinter import messagebox
 import os
 
 #Create Class For Add Entry
@@ -34,7 +35,7 @@ class Search_Entries:
 
         #If there is ' ' input in search entry, calls generate_suggestion method with given folder path
         if typed == '':
-            data = self.generate_suggestions("Locations.txt")
+            data = self.generate_suggestions(r"C:\Users\Cate\Desktop\A.Y 2022-2023\Contact_Tracing_App\All_Entries")
         else:
             #filters suggestion based on the user input in search bar, retrieves data from generate_suggestion method with given folder path
             data = []
@@ -52,6 +53,16 @@ class Search_Entries:
 
         # Add clicked list item to entry box
         self.search_entry.insert(0,  self.suggestions_box.get(tk.ANCHOR))
+
+        # Read the contents of the selected file
+        folder_path = r"C:\Users\Cate\Desktop\A.Y 2022-2023\Contact_Tracing_App\All_Entries"
+        file_path = os.path.join(folder_path, self.suggestions_box.get(tk.ANCHOR))
+        if os.path.isfile(file_path):
+            with open(file_path, 'r') as file:
+                file_content = file.read()
+                self.display_file_content(file_content)
+        else:
+            messagebox.showinfo("No Entry", "No matching entry found.")
 
 
     def update(self, data):
@@ -79,3 +90,14 @@ class Search_Entries:
 
         #returns value of suggestion list
         return suggestions
+    
+    def display_file_content(self, content):
+        # Create a new window
+        window = tk.Toplevel(self.root)
+
+        # Create a text widget
+        text_widget = tk.Text(window, height=10, width=50)
+        text_widget.pack(pady=10)
+
+        # Insert the file content into the text widget
+        text_widget.insert(tk.END, content)
