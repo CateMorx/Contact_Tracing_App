@@ -60,8 +60,14 @@ class Add_Entries:
         self.test_label.place(x=300, y=140)
 
         # Create an entry box for Search Bar to view available locations
-        self.search_entry = tk.Entry(self.root, font=("Helvetica", 16))
-        self.search_entry.place(x=300, y=160)
+        self.search_location = tk.Entry(self.root, font=("Helvetica", 16), fg="gray")
+        self.search_location.place(x=300, y=160)
+
+        #Adds temporary text within entry widget
+        default_text = "Search For Locations"
+        self.search_location.insert(0, default_text)
+        self.search_location.bind("<FocusIn>", self.on_entry_click)
+        self.search_location.bind("<FocusOut>", self.on_entry_leave)
 
         # Create a listbox for results
         self.suggestions_box_1 = tk.Listbox(self.root, width=50, selectmode=tk.MULTIPLE)
@@ -72,7 +78,7 @@ class Add_Entries:
         self.suggestions_box_2.place(x=300, y=300)
 
         # Create a binding on the entry box
-        self.search_entry.bind("<KeyRelease>", self.check)
+        self.search_location.bind("<KeyRelease>", self.check)
 
         # Create a binding on the listbox onclick
         self.suggestions_box_1.bind("<<ListboxSelect>>", self.transfer_items)
@@ -109,7 +115,7 @@ class Add_Entries:
 
     #Creates filter based on user input in search Bar
     def check(self, e):
-        typed = self.search_entry.get().lower()
+        typed = self.search_location.get().lower()
 
         # Get the selected items from the first listbox
         selected_indices_1 = self.suggestions_box_1.curselection()
@@ -170,6 +176,18 @@ class Add_Entries:
 
         #shows messagebox to cofirm that the new input is succesful
         messagebox.showinfo("New Location Added", "The location has been added successfully.")
+
+
+    def on_entry_click(self,event):
+        if self.search_location.get() == "Search For Entries":
+            self.search_location.delete(0, tk.END)
+            self.search_location.configure(foreground="black")
+
+    def on_entry_leave(self,event):
+        if self.search_location.get() == "":
+            self.search_location.insert(0, "Search For Entries")
+            self.search_location.configure(foreground="gray")
+
 
     #Exports all user input within add entry into a text file
     def export_input(self):

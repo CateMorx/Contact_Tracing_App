@@ -17,15 +17,21 @@ class Search_Entries:
 
         # Create an entry box for Search Bar to view available entries
         self.search_entry = tk.Entry(self.root, font=("Helvetica", 20), fg="gray")
-        self.search_entry.pack()
+        self.search_entry.pack(pady=40)
 
+        #Adds temporary text within entry widget
         default_text = "Search For Entries"
         self.search_entry.insert(0, default_text)
         self.search_entry.bind("<FocusIn>", self.on_entry_click)
         self.search_entry.bind("<FocusOut>", self.on_entry_leave)
+
+
+        self.result_label= tk.Label(self.root, text="Results: ")
+        self.result_label.pack()
+
         # Create a listbox for results
         self.suggestions_box = tk.Listbox(self.root, width=50)
-        self.suggestions_box.pack(pady=40)
+        self.suggestions_box.pack()
 
         # Create a binding on the entry box
         self.search_entry.bind("<KeyRelease>", self.check)
