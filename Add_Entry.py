@@ -179,13 +179,13 @@ class Add_Entries:
 
 
     def on_entry_click(self,event):
-        if self.search_location.get() == "Search For Entries":
+        if self.search_location.get() == "Search For Locations":
             self.search_location.delete(0, tk.END)
             self.search_location.configure(foreground="black")
 
     def on_entry_leave(self,event):
         if self.search_location.get() == "":
-            self.search_location.insert(0, "Search For Entries")
+            self.search_location.insert(0, "Search For Locations")
             self.search_location.configure(foreground="gray")
 
 
