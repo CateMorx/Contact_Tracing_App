@@ -72,6 +72,9 @@ class Add_Entries:
         self.new_choice_button = tk.Button(self.root, text="Add New Location", command=self.add_new_choice)
         self.new_choice_button.place(x=650, y=220)
 
+        button = tk.Button(self.root, text="Submit", command=self.export_input)
+        button.place(x=500, y=500)
+
     #Creates filter based on user input in search Bar
     def check(self, e):
         # Retrieve what was typed
@@ -127,3 +130,22 @@ class Add_Entries:
             file.write(f"\n{new_choice}")
 
         messagebox.showinfo("New Location Added", "The location has been added successfully.")
+
+    def export_input(self):
+        name = self.name_entry.get()
+        age = self.age_entry.get()
+        gender = self.gender_entry.get()
+        address = self.address_entry.get()
+        contact = self.contact_entry.get()
+
+
+        content = f"Name: {name}\nAge: {age}\nGender: {gender}\nAddress: {address}\nContact Details: {contact}"
+
+        file_path = r"C:\Users\Cate\Desktop\A.Y 2022-2023\Contact_Tracing_App\All_Entries"+ "\\" + name + ".txt"
+
+        try:
+            with open(file_path, 'w') as file:
+                file.write(content)
+            messagebox.showinfo("Export Successful", f"Content exported to {file_path}")
+        except Exception as e:
+            messagebox.showerror("Export Failed", str(e))
