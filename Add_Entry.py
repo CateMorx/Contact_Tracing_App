@@ -137,9 +137,9 @@ class Add_Entries:
         gender = self.gender_entry.get()
         address = self.address_entry.get()
         contact = self.contact_entry.get()
+        location= self.search_entry.get()
 
-
-        content = f"Name: {name}\nAge: {age}\nGender: {gender}\nAddress: {address}\nContact Details: {contact}"
+        content = f"Name: {name}\nAge: {age}\nGender: {gender}\nAddress: {address}\nContact Details: {contact}\nLocations Visited Last 14 Days: {location}"
 
         file_path = r"C:\Users\Cate\Desktop\A.Y 2022-2023\Contact_Tracing_App\All_Entries"+ "\\" + name + ".txt"
 
