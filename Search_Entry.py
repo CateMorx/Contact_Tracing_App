@@ -57,6 +57,10 @@ class Search_Entries:
         # Update the listbox with filtered suggestion
         self.update(data)
 
+            # Check if suggestions_box_1 is empty
+        if self.suggestions_box.size() == 0:
+            messagebox.showinfo("No Results", "No matching results found.")
+
     #Creates autofill based on selected item in listbox, also calls method for display file content
     def fillout(self, e):
         # Delete whatever is in the entry box
@@ -73,10 +77,6 @@ class Search_Entries:
             with open(file_path, 'r') as file:
                 file_content = file.read()
                 self.display_file_content(file_content)
-
-        #If there is no file, shows message box
-        else:
-            messagebox.showinfo("No Entry", "No matching entry found.")
 
 
     # Update the listbox with filtered suggestion
