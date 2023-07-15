@@ -68,11 +68,11 @@ class Add_Entries:
 
         #If there is ' ' input in search entry, calls generate_suggestion method with given folder path
         if typed == '':
-            data = self.generate_suggestions(r"C:\Users\Cate\Desktop\A.Y 2022-2023\Contact_Tracing_App\All_Entries")
+            data = self.generate_suggestions("Locations.txt")
         else:
             #filters suggestion based on the user input in search bar, retrieves data from generate_suggestion method with given folder path
             data = []
-            for item in self.generate_suggestions(r"C:\Users\Cate\Desktop\A.Y 2022-2023\Contact_Tracing_App\All_Entries"):
+            for item in self.generate_suggestions("Locations.txt"):
                 if typed.lower() in item.lower():
                     data.append(item)
 
@@ -98,10 +98,12 @@ class Add_Entries:
 
 
     #creates method for generating suggestion for the results
-    def generate_suggestions(self, folder_path):
+    def generate_suggestions(self, file_path):
 
         #Creates list for suggestions
         suggestions = []
-
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+            suggestions = [line.strip() for line in lines]
         #returns value of suggestion list
         return suggestions

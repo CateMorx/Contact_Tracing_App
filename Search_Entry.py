@@ -35,7 +35,7 @@ class Search_Entries:
 
         #If there is ' ' input in search entry, calls generate_suggestion method with given folder path
         if typed == '':
-            data = self.generate_suggestions(r"C:\Users\Cate\Desktop\A.Y 2022-2023\Contact_Tracing_App\All_Entries")
+            data = self.generate_suggestions("Locations.txt")
         else:
             #filters suggestion based on the user input in search bar, retrieves data from generate_suggestion method with given folder path
             data = []
