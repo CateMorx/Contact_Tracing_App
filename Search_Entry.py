@@ -49,7 +49,7 @@ class Search_Entries:
         self.search_entry.delete(0, tk.END)
 
         # Add clicked list item to entry box
-        self.search_entry.insert(0,  tk.END)
+        self.search_entry.insert(0,  self.suggestions_box.get)
 
     def update(self, data):
         # Clear the listbox
