@@ -4,6 +4,7 @@
 #imports necessary modules
 import tkinter as tk
 from tkinter import messagebox
+from collections import Counter
 
 #Create Class For Add Entry
 class Add_Entries:
@@ -15,6 +16,7 @@ class Add_Entries:
         self.selected_items_2 = []
         self.selected_option= tk.IntVar()
         self.selected_gender= tk.IntVar()
+        self.confirmed_cases = []
 
     #creates def for the GUI
     def GUI(self):
@@ -274,6 +276,7 @@ class Add_Entries:
             test_result= "Yes-Negative"
         elif selected_option == 2:
             test_result= "Yes-Positive"
+            self.add_to_confirmed_cases(name, location)
         elif selected_option == 3:
             test_result= "Not Tested"
 
@@ -299,3 +302,46 @@ class Add_Entries:
         #shows messageox if export failed
         except Exception as e:
             messagebox.showerror("Export Failed", str(e))
+
+        self.submit_entry()
+
+    def submit_entry(self):
+        confirm_contact = messagebox.askyesno("Contact Tracing", "Do you want to know your possible contacts with confirmed cases?")
+        if confirm_contact:
+            self.show_possible_contacts()
+
+    def show_possible_contacts(self):
+        # Get the locations visited by the user in the last 14 days
+        visited_locations = self.selected_items
+
+        # Load the data from the "Confirmed cases" text file
+        confirmed_cases_file = "Confirmed cases.txt"
+        confirmed_cases = []
+        with open(confirmed_cases_file, "r") as file:
+            lines = file.readlines()
+            confirmed_cases = [line.strip() for line in lines]
+
+        # Count the number of confirmed cases in each location
+        confirmed_cases_counter = Counter(confirmed_cases)
+
+        # Create a new window to display the results
+        contacts_window = tk.Toplevel(self.root)
+        contacts_window.title("Possible Contacts with Confirmed Cases")
+        contacts_window.geometry("400x300")
+
+        # Create a label for each location and the corresponding number of confirmed cases
+        for location in visited_locations:
+            num_cases = confirmed_cases_counter.get(location, 0)
+            label_text = f"Location: {location}\nNumber of Confirmed Cases: {num_cases}"
+            location_label = tk.Label(contacts_window, text=label_text)
+            location_label.pack()
+
+
+    def add_to_confirmed_cases(self, name, location):
+        # Add the user's name and locations to the confirmed cases list
+        self.confirmed_cases.append((name, location))
+
+        # Save the confirmed cases to the "Confirmed cases" text file
+        confirmed_cases_file = "Confirmed cases.txt"
+        with open(confirmed_cases_file, "a") as file:
+            file.write(f"{name}\t{location}\n")

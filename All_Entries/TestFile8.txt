@@ -1,0 +1,7 @@
+Name: TestFile8
+Age: 22
+Gender: Female
+Address: 123street 8876city
+Contact Details: 09755680218 
+Tested for Covid-19 the last 14 days: Yes-Positive 
+Locations Visited Last 14 Days: PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa
