@@ -23,6 +23,9 @@ class Search_Entries:
         # Create a binding on the entry box
         self.search_entry.bind("<KeyRelease>", self.check)
 
+        # Create a binding on the listbox onclick
+        self.suggestions_box.bind("<<ListboxSelect>>", self.fillout)
+
     #Creates filter based on user input in search Bar
     def check(self, e):
         # Retrieve what was typed
@@ -41,6 +44,12 @@ class Search_Entries:
         # Update the listbox with selected items
         self.update(data)
 
+    def fillout(self, e):
+        # Delete whatever is in the entry box
+        self.search_entry.delete(0, tk.END)
+
+        # Add clicked list item to entry box
+        self.search_entry.insert(0,  tk.END)
 
     def update(self, data):
         # Clear the listbox
