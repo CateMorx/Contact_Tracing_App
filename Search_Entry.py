@@ -14,10 +14,15 @@ class Search_Entries:
 
     #creates def for the GUI
     def GUI(self):
+
         # Create an entry box for Search Bar to view available entries
-        self.search_entry = tk.Entry(self.root, font=("Helvetica", 20))
+        self.search_entry = tk.Entry(self.root, font=("Helvetica", 20), fg="gray")
         self.search_entry.pack()
 
+        default_text = "Search For Entries"
+        self.search_entry.insert(0, default_text)
+        self.search_entry.bind("<FocusIn>", self.on_entry_click)
+        self.search_entry.bind("<FocusOut>", self.on_entry_leave)
         # Create a listbox for results
         self.suggestions_box = tk.Listbox(self.root, width=50)
         self.suggestions_box.pack(pady=40)
@@ -106,3 +111,13 @@ class Search_Entries:
 
         # Insert the file content into the text widget
         text_widget.insert(tk.END, content)
+
+    def on_entry_click(self,event):
+        if self.search_entry.get() == "Search For Entries":
+            self.search_entry.delete(0, tk.END)
+            self.search_entry.configure(foreground="black")
+
+    def on_entry_leave(self,event):
+        if self.search_entry.get() == "":
+            self.search_entry.insert(0, "Search For Entries")
+            self.search_entry.configure(foreground="gray")
