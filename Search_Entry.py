@@ -10,6 +10,7 @@ class Search_Entries:
     #Creates constructor for Search Entry
     def __init__(self, root):
         self.root = root
+
     #creates def for the GUI
     def GUI(self):
         # Create an entry box for Search Bar to view available entries
@@ -25,6 +26,7 @@ class Search_Entries:
 
         # Create a binding on the listbox onclick
         self.suggestions_box.bind("<<ListboxSelect>>", self.fillout)
+
 
     #Creates filter based on user input in search Bar
     def check(self, e):
@@ -44,12 +46,14 @@ class Search_Entries:
         # Update the listbox with selected items
         self.update(data)
 
+
     def fillout(self, e):
         # Delete whatever is in the entry box
         self.search_entry.delete(0, tk.END)
 
         # Add clicked list item to entry box
-        self.search_entry.insert(0,  self.suggestions_box.get)
+        self.search_entry.insert(0,  self.suggestions_box.get(tk.ANCHOR))
+
 
     def update(self, data):
         # Clear the listbox
@@ -58,6 +62,7 @@ class Search_Entries:
         # Add items to listbox
         for item in data:
             self.suggestions_box.insert(tk.END, item)
+
 
     #creates method for generating suggestion for the results
     def generate_suggestions(self, folder_path):
