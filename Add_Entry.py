@@ -27,7 +27,7 @@ class Add_Entries:
         self.demographic_label.place(x=100, y=90)
 
         #creates label and entry box for Name
-        self.name_label= tk.Label(self.root, text= "Name:")
+        self.name_label= tk.Label(self.root, text= "Full Name:")
         self.name_label.place(x=100, y=140)       
         self.name_entry=tk.Entry(self.root)
         self.name_entry.place(x=100, y=160)
@@ -230,6 +230,7 @@ class Add_Entries:
 
     #Exports all user input within add entry into a text file
     def export_input(self):
+
         #Retrieves user input for age
         name = self.name_entry.get()
 
@@ -276,6 +277,11 @@ class Add_Entries:
         elif selected_option == 3:
             test_result= "Not Tested"
 
+        # Check if any of the required fields are empty
+        if not name or not age or not gender_selected or not address or not contact or not selected_option or not location:
+            messagebox.showerror("Missing Information", "Please fill out all the required fields.")
+            return
+        
         #creates the content to be displayed within the text file
         content = f"Name: {name}\nAge: {age}\nGender: {gender}\nAddress: {address}\nContact Details: {contact} \nTested for Covid-19 the last 14 days: {test_result} \nLocations Visited Last 14 Days: {location}"
 
