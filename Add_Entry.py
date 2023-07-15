@@ -134,6 +134,10 @@ class Add_Entries:
         # Re-select the previously selected items in the first listbox
         for index in selected_indices_1:
             self.suggestions_box_1.select_set(index)
+
+        # Check if the search input is empty
+        if not typed:
+            return
         # Check if suggestions_box_1 is empty
         if self.suggestions_box_1.size() == 0:
             messagebox.showinfo("No Results", "No matching results found.")

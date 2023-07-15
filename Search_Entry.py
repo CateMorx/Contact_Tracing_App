@@ -57,6 +57,9 @@ class Search_Entries:
         # Update the listbox with filtered suggestion
         self.update(data)
 
+        # Check if the search input is empty
+        if not typed:
+            return
             # Check if suggestions_box_1 is empty
         if self.suggestions_box.size() == 0:
             messagebox.showinfo("No Results", "No matching results found.")
