@@ -27,7 +27,6 @@ class Search_Entries:
         # Create a binding on the listbox onclick
         self.suggestions_box.bind("<<ListboxSelect>>", self.fillout)
 
-
     #Creates filter based on user input in search Bar
     def check(self, e):
         # Retrieve what was typed

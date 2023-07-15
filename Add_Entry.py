@@ -3,13 +3,14 @@
 
 #imports necessary modules
 import tkinter as tk
+from tkinter import messagebox
 
 #Create Class For Add Entry
 class Add_Entries:
     #Creates constructor for Add Entry
     def __init__(self, root):
         self.root = root
-        self.root.geometry("800x600")
+        self.root.geometry("1000x600")
 
     #creates def for the GUI
     def GUI(self):
@@ -61,6 +62,16 @@ class Add_Entries:
         # Create a binding on the listbox onclick
         self.suggestions_box.bind("<<ListboxSelect>>", self.fillout)
 
+
+        self.test_label= tk.Label(self.root, text="Add New Entry:") 
+        self.test_label.place(x=650, y=140)       
+        self.new_choice_entry = tk.Entry(self.root)
+        self.new_choice_entry.place(x=650, y=180)
+
+        # Create a button to add new choices
+        self.new_choice_button = tk.Button(self.root, text="Add New Location", command=self.add_new_choice)
+        self.new_choice_button.place(x=650, y=220)
+
     #Creates filter based on user input in search Bar
     def check(self, e):
         # Retrieve what was typed
@@ -107,3 +118,12 @@ class Add_Entries:
             suggestions = [line.strip() for line in lines]
         #returns value of suggestion list
         return suggestions
+    
+    def add_new_choice(self):
+        new_choice = self.new_choice_entry.get()
+        file_path = "Locations.txt"
+
+        with open(file_path, 'a') as file:
+            file.write(f"\n{new_choice}")
+
+        messagebox.showinfo("New Location Added", "The location has been added successfully.")
