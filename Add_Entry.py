@@ -308,6 +308,8 @@ class Add_Entries:
 
         self.submit_entry()
 
+        self.log_entry_submission(name)
+
     def submit_entry(self):
         confirm_contact = messagebox.askyesno("Contact Tracing", "Do you want to know your possible contacts with confirmed cases?")
         if confirm_contact:
@@ -359,3 +361,34 @@ class Add_Entries:
         confirmed_cases_file = "Confirmed cases.txt"
         with open(confirmed_cases_file, "a") as file:
             file.write(f"{name}\t{location}\n")
+
+    def log_entry_submission(self, name):
+        # Create a timestamp with the current date and time
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        # Create the log entry content
+        log_entry = f"Timestamp: {timestamp} Name: {name}"
+
+        # Append the log entry to the "Log_Book.txt" file
+        log_file_path = "Log_Book.txt"
+        try:
+            # First, read the existing content of the log file (if any)
+            existing_content = ""
+            try:
+                with open(log_file_path, "r") as log_file:
+                    existing_content = log_file.read()
+            except FileNotFoundError:
+                # If the file doesn't exist, it's fine; we'll create it later
+                pass
+
+            # Now, write the log entry with the numbering order
+            with open(log_file_path, "w") as log_file:
+                # Count the number of entries in the log file to generate the numbering order
+                num_entries = existing_content.count("Entry #") + 1
+                log_file.write(existing_content + f"Entry #{num_entries}: {log_entry}\n")
+
+        except Exception as e:
+            # Print the exception details to the console for debugging
+            print("Logging Failed:", e)
+            # Show an error messagebox if logging failed
+            messagebox.showerror("Logging Failed", str(e))

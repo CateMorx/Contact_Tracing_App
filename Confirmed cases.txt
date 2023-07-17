@@ -9,3 +9,4 @@ Testfile15	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa
 Testfile16	PUP Main, PUP CEA, Puregold Sta.Mesa, Pureza Sta. Mesa Manila
 TestFile19	PUP Main, Pureza Sta. Mesa Manila, PUP CEA, Puregold Sta.Mesa, LRT Station 1. Baclaran Station, Bacoor Cavite
 TestFile20	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, SM City Bacoor Cavite, LRT Station 1. Baclaran Station
+TestFile23	National Museum of Fine Arts, Manila Ocean Park, The Heritage Hotel Manila, SM City Sta.Mesa Manila
