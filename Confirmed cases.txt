@@ -3,3 +3,4 @@ TestFile2	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Manila 
 TestFile3	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Manila Ocean Park, SM City Sta.Mesa Manila, SM City Bacoor Cavite	2023-07-17 23:05:54
 TestFile4	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Manila Ocean Park, SM City Sta.Mesa Manila, SM City Bacoor Cavite	2023-07-17 23:12:23
 TestFile5	PUP Main, PUP CEA, Manila Ocean Park, Rizal Park	2023-07-17 23:51:35
+TestFile6	SM City Sta.Mesa Manila, SM Mall of Asia, SM City Bacoor Cavite, polytechnic university of the philippines	2023-07-17 23:55:54

@@ -431,7 +431,7 @@ class Add_Entries:
         self.address_entry.delete(0, tk.END)
         self.contact_entry.delete(0, tk.END)
         self.search_location.delete(0, tk.END)
-        self.search_location.insert(0, "Search For Locations", fg="gray")
+        self.search_location.insert(0, "Search For Locations")
         self.new_choice_entry.delete(0, tk.END)
 
         # Clear selected gender and test result options
