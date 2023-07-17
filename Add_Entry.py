@@ -4,6 +4,7 @@
 #imports necessary modules
 import tkinter as tk
 from tkinter import messagebox
+import datetime 
 
 #Create Class For Add Entry
 class Add_Entries:
@@ -284,8 +285,11 @@ class Add_Entries:
             messagebox.showerror("Missing Information", "Please fill out all the required fields.")
             return
         
+        # Create a timestamp with the current date and time
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
         #creates the content to be displayed within the text file
-        content = f"Name: {name}\nAge: {age}\nGender: {gender}\nAddress: {address}\nContact Details: {contact} \nTested for Covid-19 the last 14 days: {test_result} \nLocations Visited Last 14 Days: {location}"
+        content = f"Timestamp: {timestamp} \nName: {name}\nAge: {age}\nGender: {gender}\nAddress: {address}\nContact Details: {contact} \nTested for Covid-19 the last 14 days: {test_result} \nLocations Visited Last 14 Days: {location}"
 
         #indicates file path and sets the text file name as the name input
         file_path = r"C:\Users\Cate\Desktop\A.Y 2022-2023\Contact_Tracing_App\All_Entries"+ "\\" + name + ".txt"
