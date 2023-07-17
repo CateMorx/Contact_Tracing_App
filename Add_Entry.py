@@ -328,7 +328,13 @@ class Add_Entries:
 
         # Count the occurrences of each location in the confirmed cases
         for case in confirmed_cases:
-            locations = case.split("\t")[1].split(", ")
+            name, locations = case.split("\t")
+            locations = locations.split(", ")
+
+            # If the user responded with "Yes-Positive," skip counting their case
+            if name == self.name_entry.get() and self.selected_option.get() == 2:
+                continue
+
             for location in locations:
                 if location in word_counts:
                     word_counts[location] += 1
@@ -340,11 +346,10 @@ class Add_Entries:
 
         # Display the number of confirmed cases for each visited location
         for location in visited_locations:
-            num_cases = word_counts[location] -1
+            num_cases = word_counts[location]
             label_text = f"Location: {location}\nNumber of Confirmed Cases: {num_cases}"
             location_label = tk.Label(contacts_window, text=label_text)
             location_label.pack()
-
 
     def add_to_confirmed_cases(self, name, location):
         # Add the user's name and locations to the confirmed cases list
