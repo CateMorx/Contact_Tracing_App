@@ -1,0 +1,7 @@
+Name: TestFile12
+Age: 22
+Gender: Female
+Address: Stamesa
+Contact Details: 08899967756 
+Tested for Covid-19 the last 14 days: Yes-Positive 
+Locations Visited Last 14 Days: PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Bacoor Cavite, LRT Station 1. Baclaran Station, SM City Bacoor Cavite, SM City Sta.Mesa Manila
