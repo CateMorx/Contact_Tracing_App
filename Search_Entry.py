@@ -33,6 +33,9 @@ class Search_Entries:
         self.suggestions_box = tk.Listbox(self.root, width=50)
         self.suggestions_box.pack()
 
+        self.log_book= tk.Button(self.root, text="Log Book", command= self.see_log_book)
+        self.log_book.pack()
+
         # Create a binding on the entry box
         self.search_entry.bind("<KeyRelease>", self.check)
 
@@ -130,3 +133,22 @@ class Search_Entries:
         if self.search_entry.get() == "":
             self.search_entry.insert(0, "Search For Entries")
             self.search_entry.configure(foreground="gray")
+
+    def see_log_book(self):
+        # Create a new window
+        log_window = tk.Toplevel(self.root)
+        log_window.title("Log Book")
+        log_window.geometry("400x300")
+
+        # Create a text widget to display the content of "Log_Book.txt"
+        text_widget = tk.Text(log_window, height=10, width=50)
+        text_widget.pack(pady=10)
+
+        # Read the content of "Log_Book.txt" and insert it into the text widget
+        log_file_path = "Log_Book.txt"
+        try:
+            with open(log_file_path, "r") as log_file:
+                content = log_file.read()
+                text_widget.insert(tk.END, content)
+        except FileNotFoundError:
+            text_widget.insert(tk.END, "Log Book is Empty.")
