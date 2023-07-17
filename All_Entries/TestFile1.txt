@@ -1,0 +1,8 @@
+Timestamp: 2023-07-17 22:53:04 
+Name: TestFile1
+Age: 22
+Gender: Female
+Address: Stamesa
+Contact Details: 09957788896 
+Tested for Covid-19 the last 14 days: Yes-Positive 
+Locations Visited Last 14 Days: PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Manila Ocean Park

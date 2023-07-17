@@ -1,8 +1,0 @@
-Timestamp: 2023-07-17 21:39:44 
-Name: TestFile30
-Age: 34
-Gender: Female
-Address: Stamesa
-Contact Details: 099126678 
-Tested for Covid-19 the last 14 days: Not Tested 
-Locations Visited Last 14 Days: PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Manila Ocean Park, Puregold Sta.Mesa, SM City Sta.Mesa Manila, SM City Bacoor Cavite, LRT Station 1. Baclaran Station

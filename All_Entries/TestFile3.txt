@@ -1,6 +1,8 @@
+Timestamp: 2023-07-17 23:05:54 
 Name: TestFile3
-Age: 45
-Gender: F
-Address: 4445street 667 city
-Contact Details: 5567889275
-Locations Visited Last 14 Days: National Museum of Fine Arts
+Age: 22
+Gender: Female
+Address: Stamesa
+Contact Details: 099577986655 
+Tested for Covid-19 the last 14 days: Yes-Positive 
+Locations Visited Last 14 Days: PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Manila Ocean Park, SM City Sta.Mesa Manila, SM City Bacoor Cavite

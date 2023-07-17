@@ -1,7 +1,0 @@
-Name: Testfile11
-Age: 17
-Gender: Female
-Address: 111street 234city
-Contact Details: 0089665543 
-Tested for Covid-19 the last 14 days: Yes-Positive 
-Locations Visited Last 14 Days: Quezon, PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa

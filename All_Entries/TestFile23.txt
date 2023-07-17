@@ -1,8 +1,0 @@
-Timestamp: 2023-07-17 21:16:39 
-Name: TestFile23
-Age: 23
-Gender: Female
-Address: Stamesa
-Contact Details: 099988855667 
-Tested for Covid-19 the last 14 days: Yes-Positive 
-Locations Visited Last 14 Days: National Museum of Fine Arts, Manila Ocean Park, The Heritage Hotel Manila, SM City Sta.Mesa Manila

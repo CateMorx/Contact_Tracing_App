@@ -1,12 +1,3 @@
-TestFile8	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa
-Testfile9	PUP Main, PUP CEA, SM City Sta.Mesa Manila, SM City Bacoor Cavite, LRT Station 1. Baclaran Station, Bacoor Cavite
-Testfil10	Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Quezon, SM City Bacoor Cavite, LRT Station 1. Baclaran Station
-Testfile11	Quezon, PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa
-TestFile12	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Bacoor Cavite, LRT Station 1. Baclaran Station, SM City Bacoor Cavite, SM City Sta.Mesa Manila
-TestFile13	PUP Main, PUP CEA, Puregold Sta.Mesa, Pureza Sta. Mesa Manila
-TestFile14	PUP Main, PUP CEA, Puregold Sta.Mesa, Pureza Sta. Mesa Manila, LRT Station 1. Baclaran Station, Bacoor Cavite
-Testfile15	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa
-Testfile16	PUP Main, PUP CEA, Puregold Sta.Mesa, Pureza Sta. Mesa Manila
-TestFile19	PUP Main, Pureza Sta. Mesa Manila, PUP CEA, Puregold Sta.Mesa, LRT Station 1. Baclaran Station, Bacoor Cavite
-TestFile20	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, SM City Bacoor Cavite, LRT Station 1. Baclaran Station
-TestFile23	National Museum of Fine Arts, Manila Ocean Park, The Heritage Hotel Manila, SM City Sta.Mesa Manila
+TestFile1	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Manila Ocean Park	2023-07-01 22:53:04
+TestFile2	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Manila Ocean Park	2023-07-17 23:04:20
+TestFile3	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Manila Ocean Park, SM City Sta.Mesa Manila, SM City Bacoor Cavite	2023-07-17 23:05:54

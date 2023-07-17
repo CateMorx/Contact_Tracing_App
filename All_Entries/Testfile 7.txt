@@ -1,7 +1,0 @@
-Name: Testfile 7
-Age: 55
-Gender: Female
-Address: 668 street 655 city
-Contact Details: 0988 678 4432 
-Tested for Covid-19 the last 14 days: Yes-Negative 
-Locations Visited Last 14 Days: Quezon

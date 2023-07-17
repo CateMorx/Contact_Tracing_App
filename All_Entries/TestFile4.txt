@@ -1,6 +1,0 @@
-Name: TestFile4
-Age: 17
-Gender: F
-Address: 445 Street 5557 City
-Contact Details: 0999 88 4543
-Locations Visited Last 14 Days: SM City Sta.Mesa Manila, PUP CEA, SM City Bacoor Cavite

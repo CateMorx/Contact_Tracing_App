@@ -33,7 +33,7 @@ class Search_Entries:
         self.suggestions_box = tk.Listbox(self.root, width=50)
         self.suggestions_box.pack()
 
-        self.log_book= tk.Button(self.root, text="Log Book", command= self.see_log_book)
+        self.log_book= tk.Button(self.root, text="View Log Book", command= self.see_log_book)
         self.log_book.pack()
 
         # Create a binding on the entry box

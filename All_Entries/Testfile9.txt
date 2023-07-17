@@ -1,7 +1,0 @@
-Name: Testfile9
-Age: 32
-Gender: Female
-Address: 888street 999 avenue
-Contact Details: 089 775 6623 
-Tested for Covid-19 the last 14 days: Yes-Positive 
-Locations Visited Last 14 Days: PUP Main, PUP CEA, SM City Sta.Mesa Manila, SM City Bacoor Cavite, LRT Station 1. Baclaran Station, Bacoor Cavite

@@ -1,7 +1,0 @@
-Name: TestFile5
-Age: 66
-Gender: Female
-Address: 8889 street 664 city
-Contact Details: 0899 755 8866 
-Tested for Covid-19 the last 14 days: Yes-Negative 
-Locations Visited Last 14 Days: Quezon, SM City Bacoor Cavite, LRT Station 1. Baclaran Station, Bacoor Cavite

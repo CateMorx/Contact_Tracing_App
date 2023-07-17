@@ -328,10 +328,21 @@ class Add_Entries:
         # Initialize a dictionary to store word counts
         word_counts = {location: 0 for location in visited_locations}
 
+        # Get the current timestamp
+        current_time = datetime.datetime.now()
+
         # Count the occurrences of each location in the confirmed cases
         for case in confirmed_cases:
-            name, locations = case.split("\t")
+            name, locations, timestamp_str = case.split("\t")
             locations = locations.split(", ")
+            timestamp = datetime.datetime.strptime(timestamp_str, "%Y-%m-%d %H:%M:%S")
+
+            # Calculate the difference between the current timestamp and the entry's timestamp
+            time_difference = current_time - timestamp
+
+            # Skip counting the case if the entry is older than 14 days
+            if time_difference.days > 14:
+                continue
 
             # If the user responded with "Yes-Positive," skip counting their case
             if name == self.name_entry.get() and self.selected_option.get() == 2:
@@ -354,14 +365,16 @@ class Add_Entries:
             location_label.pack()
 
     def add_to_confirmed_cases(self, name, location):
-        # Add the user's name and locations to the confirmed cases list
-        self.confirmed_cases.append((name, location))
+        # Get the current timestamp
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+        # Add the user's name, locations, and timestamp to the confirmed cases list
+        self.confirmed_cases.append((name, location, timestamp))
         # Save the confirmed cases to the "Confirmed cases" text file
         confirmed_cases_file = "Confirmed cases.txt"
         with open(confirmed_cases_file, "a") as file:
-            file.write(f"{name}\t{location}\n")
-
+            file.write(f"{name}\t{location}\t{timestamp}\n")
+        
     def log_entry_submission(self, name):
         # Create a timestamp with the current date and time
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")

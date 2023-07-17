@@ -1,7 +1,0 @@
-Name: TestFile6
-Age: 88
-Gender: Female
-Address: 666777 street 8899 city
-Contact Details: 005 555 8765 
-Tested for Covid-19 the last 14 days: Yes-Negative 
-Locations Visited Last 14 Days: 
