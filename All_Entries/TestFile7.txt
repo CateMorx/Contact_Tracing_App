@@ -1,0 +1,8 @@
+Timestamp: 2023-07-17 23:58:36 
+Name: TestFile7
+Age: 8
+Gender: Female
+Address: 100600 Street
+Contact Details: 9988557621 
+Tested for Covid-19 the last 14 days: Yes-Positive 
+Locations Visited Last 14 Days: PUP Main, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Rizal Park, The Heritage Hotel Manila, National Museum of Fine Arts
