@@ -326,6 +326,8 @@ class Add_Entries:
 
         self.log_entry_submission(name)
 
+        self.clear_user_inputs()
+
     def submit_entry(self):
         confirm_contact = messagebox.askyesno("Contact Tracing", "Do you want to know your possible contacts with confirmed cases?")
         if confirm_contact:
@@ -421,3 +423,24 @@ class Add_Entries:
             print("Logging Failed:", e)
             # Show an error messagebox if logging failed
             messagebox.showerror("Logging Failed", str(e))
+
+    def clear_user_inputs(self):
+        # Clear all entry fields
+        self.name_entry.delete(0, tk.END)
+        self.age_entry.delete(0, tk.END)
+        self.address_entry.delete(0, tk.END)
+        self.contact_entry.delete(0, tk.END)
+        self.search_location.delete(0, tk.END)
+        self.search_location.insert(0, "Search For Locations", fg="gray")
+        self.new_choice_entry.delete(0, tk.END)
+
+        # Clear selected gender and test result options
+        self.selected_gender.set(0)
+        self.selected_option.set(0)
+
+        # Clear both listbox
+        self.suggestions_box_2.delete(0, tk.END)
+
+        # Clear the selected items lists
+        self.selected_items = []
+        self.selected_items_2 = []
