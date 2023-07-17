@@ -194,17 +194,22 @@ class Add_Entries:
     
     #Allows user to add a new location
     def add_new_choice(self):
-        #Retrieves input from new_choice_entry
+        # Retrieves input from new_choice_entry
         new_choice = self.new_choice_entry.get()
 
-        #Indicates the file where the new item will be stored
+        # Check if the input contains a comma
+        if "," in new_choice:
+            messagebox.showerror("Invalid Input", "Commas are not allowed in the location name.")
+            return
+
+        # Indicates the file where the new item will be stored
         file_path = "Locations.txt"
 
-        #opens file and appends new_choice into the file
+        # Opens file and appends new_choice into the file
         with open(file_path, 'a') as file:
             file.write(f"\n{new_choice}")
 
-        #shows messagebox to cofirm that the new input is succesful
+        # Shows a messagebox to confirm that the new input is successful
         messagebox.showinfo("New Location Added", "The location has been added successfully.")
 
 
@@ -354,7 +359,7 @@ class Add_Entries:
 
         # Create a new window to display the results
         contacts_window = tk.Toplevel(self.root)
-        contacts_window.title("Possible Contacts with Confirmed Cases")
+        contacts_window.title("Possible Contacts with Confirmed Cases in the Last 14 Days")
         contacts_window.geometry("400x300")
 
         # Display the number of confirmed cases for each visited location
