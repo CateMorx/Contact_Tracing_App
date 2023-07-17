@@ -105,6 +105,7 @@ class Add_Entries:
 
         # Create a binding on the listbox onclick
         self.suggestions_box_1.bind("<<ListboxSelect>>", self.transfer_items)
+        self.suggestions_box_2.bind("<<ListboxSelect>>", self.transfer_items)
 
         # create label and entry to add new location
         self.test_label= tk.Label(self.root, text="Add New Location:") 
@@ -151,7 +152,7 @@ class Add_Entries:
             for item in self.generate_suggestions("Locations.txt"):
                 if typed in item.lower():
                     #Makes sure that there are no duplicates between listbox 1 and 2
-                    if item not in self.selected_items_2:
+                    if item not in self.suggestions_box_2.get(0, tk.END):
                         self.suggestions_box_1.insert(tk.END, item)
 
         # Re-select the previously selected items in the first listbox
@@ -174,9 +175,19 @@ class Add_Entries:
             item = self.suggestions_box_1.get(index)
 
             #Makes sure there is no duplicates within listbox 2
-            if item not in self.selected_items_2:
+            if item not in self.suggestions_box_2.get(0, tk.END):
+                self.selected_items_2=list(self.suggestions_box_2.get(0, tk.END))
                 self.selected_items_2.append(item)
                 self.suggestions_box_2.insert(tk.END, item)
+
+        # Remove the selected item from Listbox 2 when clicked
+        selected_indices_2 = self.suggestions_box_2.curselection()
+        for index in selected_indices_2:
+            item = self.suggestions_box_2.get(index)
+            # Show a confirmation popup asking if the user wants to remove the location
+            answer = messagebox.askyesno("Remove Location", f"Are you sure you want to remove {item}?")
+            if answer:
+                self.suggestions_box_2.delete(index)
 
 
     #creates method for generating suggestion for the results
