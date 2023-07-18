@@ -1,0 +1,8 @@
+Timestamp: 2023-07-18 18:40:46 
+Name: Cate Joy Morrx
+Age: 16
+Gender: Female
+Address: 100776 Street Marineta Avenue
+Contact Details: 09967755532 
+Tested for Covid-19 the last 14 days: Yes-Positive 
+Locations Visited Last 14 Days: PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Manila Ocean Park, Rizal Park, polytechnic university of the philippines

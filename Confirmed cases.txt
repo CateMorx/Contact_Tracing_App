@@ -5,3 +5,6 @@ TestFile4	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Manila 
 TestFile5	PUP Main, PUP CEA, Manila Ocean Park, Rizal Park	2023-07-17 23:51:35
 TestFile6	SM City Sta.Mesa Manila, SM Mall of Asia, SM City Bacoor Cavite, polytechnic university of the philippines	2023-07-17 23:55:54
 TestFile7	PUP Main, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Rizal Park, The Heritage Hotel Manila, National Museum of Fine Arts	2023-07-17 23:58:36
+Cate Joy Morrx		2023-07-18 18:40:27
+Cate Joy Morrx	PUP Main, PUP CEA, Pureza Sta. Mesa Manila, Puregold Sta.Mesa, Manila Ocean Park, Rizal Park, polytechnic university of the philippines	2023-07-18 18:40:46
+Carly Joan	SM City Sta.Mesa Manila, PUP CEA, SM City Bacoor Cavite, LRT Station 1. Baclaran Station, Bacoor Cavite, Bicol Philippines, PUP Main, Pureza Sta. Mesa Manila, Puregold Sta.Mesa	2023-07-18 18:42:49

@@ -1,0 +1,8 @@
+Timestamp: 2023-07-18 18:42:49 
+Name: Carly Joan
+Age: 22
+Gender: Female
+Address: 3009 Walter Street
+Contact Details: 08895567789 
+Tested for Covid-19 the last 14 days: Yes-Positive 
+Locations Visited Last 14 Days: SM City Sta.Mesa Manila, PUP CEA, SM City Bacoor Cavite, LRT Station 1. Baclaran Station, Bacoor Cavite, Bicol Philippines, PUP Main, Pureza Sta. Mesa Manila, Puregold Sta.Mesa
