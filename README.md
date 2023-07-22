@@ -7,6 +7,7 @@ The Add_Entry allows users to add their own entry which will be recorded in the 
 
 The Search_Entry allows the user to view previous entries via a search bar. Once the user have input the name of the individual they wish to view, the name will be displayed in the list box labeled "Results". As the user select the option within the results, the text file will be automatically displayed for the user to view. The users are also given the option to view log books which will display the number of entries, their names, as well as the timestamp in which the entry was submitted.
 
+Note: Please make sure to modify the "file_path" within the "export_input" method of the "Add_Entry" python file to your preferred file path. Also, update the file paths indicated in the calls to the method "self.generate_suggestion()" within the "check" method of the "Search_Entry" python file, and don't forget to adjust the "folder_path" within the "fillout" method in the "Search_Entry" python file accordingly. 
 # Demo
 ![Alt Text](Contact_Tracing_App.gif)
 
